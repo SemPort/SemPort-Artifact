@@ -13,6 +13,25 @@ endpoint and API key before running (fields in the repo are empty placeholders).
 
 ## Run
 
+**Repository layout**: run data must config repos — see the path
+globals at the top of `src/dataset/prepare.py` (`PROJECT_ROOT`, `DATASETS`,
+`REPOS`, `TASK_ROOT`):
+
+```
+<project root>/
+├── src/
+├── dataset/
+│   ├── backport/                    # prepared per-CVE data
+│   └── upstream-to-downstream/
+├── repos/
+│   ├── backport/
+│   │   ├── linux/                   # source repo (both modes)
+│   │   └── linux-stable/            # target repo (backport)
+│   └── upstream-to-downstream/
+│       └── android-common/          # target repo (upstream-to-downstream)
+└── task/                            # created automatically
+```
+
 CVE IDs come from the `cve_id` column of `Datasets/metadata_linux.csv` /
 `Datasets/metadata_android.csv` (`$CVES` is a placeholder, space/comma
 separated). Requires Python >= 3.10 with `venv/` at the repo root.
